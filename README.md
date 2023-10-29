@@ -1,5 +1,5 @@
 # OnionArchitecture
-I# UnionArchitecture in C# Core
+I# onionArchitecture in C# Core
 
 ## Overview
 This project implements a UnionArchitecture in C# Core, offering a flexible framework for unifying and managing diverse data sources, streams, or components into a cohesive system.
