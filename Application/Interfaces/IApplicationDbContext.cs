@@ -1,4 +1,4 @@
-﻿using Domain.Entity;
+﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,6 +10,6 @@ namespace Application.Interfaces
 	public  interface IApplicationDbContext
 	{
 		DbSet<Product> Products { get; set; }
-		Task<int> SaveChanges();
+		Task<int> SaveChangesAsync();
 	}
 }

@@ -34,6 +34,8 @@ namespace WebApi
 			#endregion
 
 			services.AddApplication();
+			services.AddPersistence(Configuration);
+			services.AddApiVersioning();
 			services.AddControllers();
 		}
 
