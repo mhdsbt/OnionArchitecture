@@ -7,10 +7,13 @@ public static class DependencyInjection
 {
 	public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
 	{
+		var connectionstring = configuration.GetConnectionString("DefaultConnection");
+
 		services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseMySql(
-						configuration.GetConnectionString("DefaultConnection"),
+				options.UseMySql(connectionstring,
+						ServerVersion.AutoDetect(connectionstring),
 						b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+		
 		services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
 	}
 }
