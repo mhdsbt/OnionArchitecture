@@ -12,12 +12,6 @@ namespace Persistence.Context
 		{
 		}
 
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
-		{
-			modelBuilder.Entity<Product>().Property(p => p.Rate).HasColumnType("decimal(10, 2)");
-
-			base.OnModelCreating(modelBuilder);
-		}
 		public DbSet<Product> Products { get; set; }
 		public async Task<int> SaveChangesAsync()
 		{
