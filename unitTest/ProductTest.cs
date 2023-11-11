@@ -11,9 +11,18 @@ namespace unitTest
 {
 	public class ProductTest
 	{
+
+		private Mock<IApplicationDbContext> mockContext;
+		private Mock<DbSet<Product>> mockProducts;
+
 		[SetUp]
 		public void Setup()
 		{
+
+			// Common setup code here
+			mockContext = new Mock<IApplicationDbContext>();
+			mockProducts = new Mock<DbSet<Product>>();
+			mockContext.Setup(c => c.Products).Returns(mockProducts.Object);
 		}
 
 		[Test]
@@ -27,14 +36,7 @@ namespace unitTest
 				Description = "A sample product",
 				Rate = 10.0m
 			};
-
 			
-			var mockContext = new Mock<IApplicationDbContext>();
-			var mockProducts = new Mock<DbSet<Product>>();
-
-			// Set up the behavior of _context.Products
-			mockContext.Setup(c => c.Products).Returns(mockProducts.Object);
-
 			var product = new Product
 			{
 				Id = 1, 
@@ -52,8 +54,6 @@ namespace unitTest
 
 			// Assert
 			Assert.True(result > 0);
-			
-
 		}
 	}
 }
