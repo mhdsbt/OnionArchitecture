@@ -31,6 +31,8 @@ namespace Application.Features.ProductFeatures.Commands
 				product.Rate = command.Rate;
 				product.Description = command.Description;
 				_context.Products.Add(product);
+
+				cancellationToken.ThrowIfCancellationRequested();
 				await _context.SaveChangesAsync();
 
 				return product.Id;
