@@ -15,7 +15,7 @@ namespace WebApi.Controllers.v1
 	public class ProductController : BaseApiController
 	{
 		[HttpPost]
-		public async Task<IActionResult> Create(CreateProductCommand command)
+		public async Task<IActionResult> Create(CreateAutoCallCommand command)
 		{
 			return Ok(await Mediator.Send(command));
 		}
