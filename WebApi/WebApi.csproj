@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>f3011852-7dc8-4ff8-b5cc-6cb1d52231b2</UserSecretsId>
@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetCore.CAP.Dashboard" Version="8.1.0" />
+    <PackageReference Include="DotNetCore.CAP.MongoDB" Version="8.1.0" />
+    <PackageReference Include="DotNetCore.CAP.MySql" Version="8.1.0" />
+    <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="8.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.24">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
