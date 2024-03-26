@@ -27,7 +27,6 @@ namespace WebApi.Controllers.v1
 		{
 			await Mediator.Send(command);
 
-
 			var payLoad = new
 			{
 				PhoneNumber = command.PhoneNumber,
