@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application.Features.ProductFeatures.Commands;
 using Application.Features.ProductFeatures.Queries;
+using Application.Interfaces;
 using Domain.DTO;
 using Domain.Entities;
 using DotNetCore.CAP;
@@ -12,30 +13,30 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.v1
 {
-	[ApiVersion("1.0")]
-	public class AutoCallRequestController : BaseApiController
-	{
-		private readonly ICapPublisher _capPublisher;
+    [ApiVersion("1.0")]
+    public class AutoCallRequestController : BaseApiController
+    {
+        private readonly IMessagePublisher _MessagePublisher;
 
-        public AutoCallRequestController(ICapPublisher capPublisher)
+        public AutoCallRequestController(IMessagePublisher iMessagePublisher)
         {
-            _capPublisher = capPublisher;
+            _MessagePublisher = iMessagePublisher;
         }
 
         [HttpPost]
-		public async Task<IActionResult> Create(CreateAutoCallCommand command)
-		{
-			await Mediator.Send(command);
+        public async Task<IActionResult> Create(CreateAutoCallCommand command)
+        {
+            await Mediator.Send(command);
 
-			var payLoad = new
-			{
-				PhoneNumber = command.PhoneNumber,
-				AutoCallRequestStatus = command.AutoCallRequestStatus
-			};
+            var payLoad = new
+            {
+                PhoneNumber = command.PhoneNumber,
+                AutoCallRequestStatus = command.AutoCallRequestStatus
+            };
 
-			await _capPublisher.PublishAsync("AutoCallRequest", payLoad);
+            await _MessagePublisher.PublishAsync("AutoCallRequest", payLoad);
 
             return Ok();
-		}
-	}
+        }
+    }
 }

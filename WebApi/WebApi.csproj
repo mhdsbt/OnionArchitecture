@@ -9,10 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetCore.CAP.Dashboard" Version="8.1.0" />
-    <PackageReference Include="DotNetCore.CAP.MongoDB" Version="8.1.0" />
-    <PackageReference Include="DotNetCore.CAP.MySql" Version="8.1.0" />
-    <PackageReference Include="DotNetCore.CAP.RabbitMQ" Version="8.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.24">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
