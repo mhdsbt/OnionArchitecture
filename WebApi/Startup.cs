@@ -13,6 +13,7 @@ using DotNetCore.CAP.Messages;
 using System;
 using WebApi.Configuration;
 using System.Text;
+using Persistence.MessageConsumer;
 
 
 //using DotNetCore.CAP.Persistence.EntityFrameworkCore;
@@ -49,6 +50,11 @@ namespace WebApi
             services.AddApiVersioning();
             services.AddControllers();
 
+            services.AddApiVersioning(options =>
+            {
+                options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+                options.AssumeDefaultVersionWhenUnspecified = true;
+            });
 
             var _rabbitMqConfigurations = new MessageBusConfiguration();
             Configuration.GetSection("RabbitMQ").Bind(_rabbitMqConfigurations);
@@ -56,6 +62,7 @@ namespace WebApi
 
             services.AddCap(options =>
             {
+                
                 options.UseRabbitMQ(opt =>
                 {
                     opt.HostName = _rabbitMqConfigurations.Host;
@@ -66,6 +73,7 @@ namespace WebApi
                     opt.ExchangeName = _rabbitMqConfigurations.Exchange;
 
                 });
+                
                 options.FailedThresholdCallback = (info)
 =>
                 {

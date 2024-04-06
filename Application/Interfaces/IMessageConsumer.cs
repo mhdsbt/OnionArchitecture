@@ -7,6 +7,6 @@ namespace Application.Interfaces
 {
     public interface IMessageConsumer
     {
-        Task ConsumeAsync(string eventName, object message);
+        Task ConsumeAsync(object message);
     }
 }

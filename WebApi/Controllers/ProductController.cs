@@ -11,8 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.v1
 {
-	[ApiVersion("1.0")]
-	public class ProductController : BaseApiController
+    public class ProductController : BaseApiController
 	{
 		[HttpPost]
 		public async Task<IActionResult> Create(CreateAutoCallCommand command)

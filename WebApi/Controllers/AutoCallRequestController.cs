@@ -11,9 +11,8 @@ using DotNetCore.CAP;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApi.Controllers.v1
+namespace WebApi.Controllers
 {
-    [ApiVersion("1.0")]
     public class AutoCallRequestController : BaseApiController
     {
         private readonly IMessagePublisher _MessagePublisher;
@@ -31,7 +30,7 @@ namespace WebApi.Controllers.v1
             var payLoad = new
             {
                 PhoneNumber = command.PhoneNumber,
-                AutoCallRequestStatus = command.AutoCallRequestStatus
+                AutoCallRequestStatus = (int)command.AutoCallRequestStatus
             };
 
             await _MessagePublisher.PublishAsync("AutoCallRequest", payLoad);
